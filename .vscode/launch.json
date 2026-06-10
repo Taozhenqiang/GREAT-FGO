@@ -1,0 +1,37 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Qoder GREAT-GINSFGO",
+            "type": "lldb",
+            "request": "launch",
+            "program": "${workspaceFolder}/build_Windows/Bin/RelWithDebInfo/GREAT_GINSFGO.exe",
+            "args": [
+                "-x",
+                "./xml/GREAT-GINSFGO-TC-RTKINS-1012-urban.xml"
+            ],
+            "cwd": "${workspaceFolder}/sample_data/FGO_20211012",
+            "console": "externalTerminal"
+        },
+        {
+            "name": "Windows GREAT-GINSFGO",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build_Windows/Bin/RelWithDebInfo/GREAT_GINSFGO.exe",
+            "args": [
+                "-x",
+                "./xml/GREAT-GINSFGO-TC-RTKINS-1012-urban.xml"
+            ],
+            "cwd": "${workspaceFolder}/sample_data/FGO_20211012",
+            "console": "externalTerminal"
+        },
+        {
+            "name": "Python plot",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/plot/Evaluation.py",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal"
+        }
+    ]
+}

@@ -1,0 +1,71 @@
+{
+    "configurations": [
+        {
+            "name": "Windows",
+            "includePath": [
+                // 项目源代码路径
+                "${workspaceFolder}/src",
+                "${workspaceFolder}/src/LibGnut",
+                "${workspaceFolder}/src/LibGnut/gall",
+                "${workspaceFolder}/src/LibGnut/gcoders",
+                "${workspaceFolder}/src/LibGnut/gdata",
+                "${workspaceFolder}/src/LibGnut/gexport",
+                "${workspaceFolder}/src/LibGnut/gio",
+                "${workspaceFolder}/src/LibGnut/gmodels",
+                "${workspaceFolder}/src/LibGnut/gproc",
+                "${workspaceFolder}/src/LibGnut/gprod",
+                "${workspaceFolder}/src/LibGnut/gset",
+                "${workspaceFolder}/src/LibGnut/gutils",
+                "${workspaceFolder}/src/LibGnut/newmat",
+                "${workspaceFolder}/src/LibGnut/pugixml",
+                "${workspaceFolder}/src/LibGnut/spdlog",
+                
+                "${workspaceFolder}/src/LibGREAT",
+                "${workspaceFolder}/src/LibGREAT/gambfix",
+                "${workspaceFolder}/src/LibGREAT/gcoders",
+                "${workspaceFolder}/src/LibGREAT/gdata",
+                "${workspaceFolder}/src/LibGREAT/gexport",
+                "${workspaceFolder}/src/LibGREAT/gfactor",
+                "${workspaceFolder}/src/LibGREAT/gfgo",
+                "${workspaceFolder}/src/LibGREAT/gfgognss",
+                "${workspaceFolder}/src/LibGREAT/gfgomsf",
+                "${workspaceFolder}/src/LibGREAT/gins",
+                "${workspaceFolder}/src/LibGREAT/gmodels",
+                "${workspaceFolder}/src/LibGREAT/gmsf",
+                "${workspaceFolder}/src/LibGREAT/gproc",
+                "${workspaceFolder}/src/LibGREAT/gset",
+                "${workspaceFolder}/src/LibGREAT/gutils",
+                
+                "${workspaceFolder}/src/app/GREAT_GINSFGO",
+                "${workspaceFolder}/src/app/GREAT_MSF",
+                "${workspaceFolder}/src/app/GREAT_PVT",
+                "${workspaceFolder}/src/app/GREAT_PVTFGO",
+                
+                // 第三方库路径（根据实际安装位置调整）
+                // Eigen库路径
+                "${workspaceFolder}/src/third-party/Eigen",      
+                // GLFW库路径
+                "${workspaceFolder}/src/third-party/GLFW/include",        
+                // Ceres Solver库路径
+                "${workspaceFolder}/src/third-party/ceres/include"                              
+
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE",
+                "WIN32",
+                "_WINDOWS",
+                "GLOG_NO_ABBREVIATED_SEVERITIES",
+                "_CRT_SECURE_NO_WARNINGS",
+                "_SCL_SECURE_NO_WARNINGS"
+            ],
+            "windowsSdkVersion": "10.0.26100.0",
+            "compilerPath": "D:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx86/x64/cl.exe",
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "windows-msvc-x64"
+        }
+    ],
+    "version": 4
+}

@@ -1,5 +1,5 @@
 #Minimum requirement of CMake version : 3.0.0
-cmake_minimum_required(VERSION 3.0.0)
+cmake_minimum_required(VERSION 3.5.0)
 
 #Project name and version number
 project(${LibGnut} VERSION 0.1.0)
@@ -13,8 +13,8 @@ add_definitions(-D GREAT_LibGnut_LIBRARY)
 if(CMAKE_SYSTEM_NAME MATCHES "Windows")
     #For windows
     # ==============================================================================
-    if (NOT DEFINED Third_Eigen_ROOT)
-        find_path(Third_Eigen_ROOT       HINTS "${Third_Eigen_ROOT}"        "$ENV{Third_Eigen_ROOT}            ")
+    if (NOT Third_Eigen_ROOT OR NOT EXISTS "${Third_Eigen_ROOT}")
+        set(Third_Eigen_ROOT       ${ThirdParty_ROOT}/Eigen CACHE PATH "Eigen root directory" FORCE)
     endif()
 
     # ==============================================================================
@@ -22,8 +22,8 @@ else()
     # For linux
     # write write_your_path_here
     # ==============================================================================
-    if (NOT DEFINED Third_Eigen_ROOT)
-        set(Third_Eigen_ROOT       ${ROOT}/third-party/Eigen)
+    if (NOT Third_Eigen_ROOT OR NOT EXISTS "${Third_Eigen_ROOT}")
+        set(Third_Eigen_ROOT       ${ThirdParty_ROOT}/Eigen CACHE PATH "Eigen root directory" FORCE)
     endif()
 
     # ==============================================================================

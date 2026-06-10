@@ -1,5 +1,5 @@
 #Minimum requirement of CMake version : 3.0.0
-cmake_minimum_required(VERSION 3.0.0)
+cmake_minimum_required(VERSION 3.5.0)
 
 #Project name and version number
 project(GREAT-FGO VERSION 0.1.0)
@@ -76,6 +76,7 @@ endif()
 
 # Set the ROOT and subdirectory, you should put the CMakeList.txt in these file directories
 set(ROOT ${PROJECT_SOURCE_DIR})
+set(ThirdParty_ROOT ${ROOT}/Third-party)
 set(EXECUTABLE_OUTPUT_PATH ${BUILD_DIR}/Bin)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${BUILD_DIR}/Bin)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${BUILD_DIR}/Lib)
@@ -109,14 +110,12 @@ set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 if(CMAKE_SYSTEM_NAME MATCHES "Windows")
     #For windows
     # ==============================================================================
-    if (NOT DEFINED Third_Eigen_ROOT)
-        find_path(Third_Eigen_ROOT       HINTS "${Third_Eigen_ROOT}"        "$ENV{Third_Eigen_ROOT}            ")
+    if (NOT Third_Eigen_ROOT OR NOT EXISTS "${Third_Eigen_ROOT}")
+        set(Third_Eigen_ROOT       ${ThirdParty_ROOT}/Eigen CACHE PATH "Eigen root directory" FORCE)
     endif()
 
-    if (NOT DEFINED Third_GLFW_ROOT)
-        find_path(Third_GLFW_ROOT        HINTS "${Third_GLFW_ROOT}"         "$ENV{Third_GLFW_ROOT}         ")
-		
-	
+    if (NOT Third_GLFW_ROOT OR NOT EXISTS "${Third_GLFW_ROOT}")
+        set(Third_GLFW_ROOT        ${ThirdParty_ROOT}/GLFW CACHE PATH "GLFW root directory" FORCE)
     endif()
 
 	
@@ -125,12 +124,12 @@ else()
     # For linux
     # write write_your_path_here
     # ==============================================================================
-    if (NOT DEFINED Third_Eigen_ROOT)
-        set(Third_Eigen_ROOT       ${ROOT}/third-party/Eigen)
+    if (NOT Third_Eigen_ROOT OR NOT EXISTS "${Third_Eigen_ROOT}")
+        set(Third_Eigen_ROOT       ${ThirdParty_ROOT}/Eigen CACHE PATH "Eigen root directory" FORCE)
     endif()
 
-    if (NOT DEFINED Third_GLFW_ROOT)
-        set(Third_GLFW_ROOT       ${ROOT}/third-party/GLFW)
+    if (NOT Third_GLFW_ROOT OR NOT EXISTS "${Third_GLFW_ROOT}")
+        set(Third_GLFW_ROOT       ${ThirdParty_ROOT}/GLFW CACHE PATH "GLFW root directory" FORCE)
     endif()
 	
     # ==============================================================================

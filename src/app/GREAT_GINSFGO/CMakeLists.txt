@@ -1,5 +1,5 @@
 ﻿#Cmake 最低版本号要求
-cmake_minimum_required(VERSION 3.0.0)
+cmake_minimum_required(VERSION 3.5.0)
 
 #项目信息
 project(${gins})
@@ -20,7 +20,7 @@ set(include_path
 include_directories(${include_path})
 include_directories(${GLFW_ROOT}/include/)
 
-include_directories(${ceres_ROOT}/include/)
+include_directories(${Third_ceres_ROOT}/include/)
 include_directories(${opencv_ROOT}/include/)
 include_directories(${GLFW_ROOT}/include/)
 include_directories(${pcl_ROOT}/include/pcl-1.9/)

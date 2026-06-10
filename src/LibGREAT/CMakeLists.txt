@@ -1,5 +1,5 @@
 #Minimum requirement of CMake version : 3.0.0
-cmake_minimum_required(VERSION 3.0.0)
+cmake_minimum_required(VERSION 3.5.0)
 
 #Project name and version number
 project(${LibGREAT} VERSION 0.1.0)
@@ -15,14 +15,14 @@ add_definitions(-D GLOG_NO_ABBREVIATED_SEVERITIES)
 if(CMAKE_SYSTEM_NAME MATCHES "Windows")
     #For windows
     # ==============================================================================
-    if (NOT DEFINED Third_Eigen_ROOT)
-        find_path(Third_Eigen_ROOT       HINTS "${Third_Eigen_ROOT}"        "$ENV{Third_Eigen_ROOT}            ")
+    if (NOT Third_Eigen_ROOT OR NOT EXISTS "${Third_Eigen_ROOT}")
+        set(Third_Eigen_ROOT       ${ThirdParty_ROOT}/Eigen CACHE PATH "Eigen root directory" FORCE)
     endif()
-    if (NOT DEFINED Third_GLFW_ROOT)
-        set(Third_GLFW_ROOT       ${ROOT}/third-party/GLFW)
+    if (NOT Third_GLFW_ROOT OR NOT EXISTS "${Third_GLFW_ROOT}")
+        set(Third_GLFW_ROOT       ${ThirdParty_ROOT}/GLFW CACHE PATH "GLFW root directory" FORCE)
     endif()
-	if (NOT DEFINED Third_ceres_ROOT)
-        	find_path(Third_ceres_ROOT       HINTS "${ceres_ROOT}"        "$ENV{ceres_ROOT}            ")
+	if (NOT Third_ceres_ROOT OR NOT EXISTS "${Third_ceres_ROOT}")
+        set(Third_ceres_ROOT      ${ThirdParty_ROOT}/ceres CACHE PATH "Ceres root directory" FORCE)
     endif()
 
     # ==============================================================================
@@ -30,17 +30,21 @@ else()
     # For linux
     # write write_your_path_here
     # ==============================================================================
-    if (NOT DEFINED Third_Eigen_ROOT)
-        set(Third_Eigen_ROOT       ${ROOT}/third-party/Eigen)
+    if (NOT Third_Eigen_ROOT OR NOT EXISTS "${Third_Eigen_ROOT}")
+        set(Third_Eigen_ROOT       ${ThirdParty_ROOT}/Eigen CACHE PATH "Eigen root directory" FORCE)
     endif()
-    if (NOT DEFINED Third_GLFW_ROOT)
-        set(Third_GLFW_ROOT       ${ROOT}/third-party/GLFW)
+    if (NOT Third_GLFW_ROOT OR NOT EXISTS "${Third_GLFW_ROOT}")
+        set(Third_GLFW_ROOT       ${ThirdParty_ROOT}/GLFW CACHE PATH "GLFW root directory" FORCE)
     endif()
-	if (NOT DEFINED Third_ceres_ROOT)
-        set(Third_ceres_ROOT      ${ROOT}/third-party/ceres)   
+	if (NOT Third_ceres_ROOT OR NOT EXISTS "${Third_ceres_ROOT}")
+        set(Third_ceres_ROOT      ${ThirdParty_ROOT}/ceres CACHE PATH "Ceres root directory" FORCE)
     endif()
 	
     # ==============================================================================
+endif()
+
+if(NOT EXISTS "${Third_ceres_ROOT}/include/ceres/ceres.h")
+    message(FATAL_ERROR "Ceres headers were not found at ${Third_ceres_ROOT}/include. Set Third_ceres_ROOT or ceres_ROOT to the Ceres install root.")
 endif()
 
 # set include path
